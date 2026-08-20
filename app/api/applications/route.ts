@@ -1,10 +1,12 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { query } from '@/lib/db';
 
+// Forces Next.js to treat this API route as dynamic, preventing build-time static extraction crashes
+export const dynamic = 'force-dynamic';
+
 // GET: Look up an application by ID with user join
-export async function GET(request: Request) {
-  const { searchParams } = new URL(request.url);
-  const id = searchParams.get('id');
+export async function GET(request: NextRequest) {
+  const id = request.nextUrl.searchParams.get('id');
 
   if (!id) {
     return NextResponse.json(
@@ -38,7 +40,13 @@ export async function GET(request: Request) {
       );
     }
 
-    return NextResponse.json(result.rows[0]);
+    const application = result.rows[0];
+
+    // PostgreSQL NUMERIC types return as strings; cast loanAmount to Number for frontend compatibility
+    return NextResponse.json({
+      ...application,
+      loanAmount: Number(application.loanAmount),
+    });
   } catch (error) {
     console.error('Database application lookup error:', error);
     return NextResponse.json(
@@ -104,7 +112,7 @@ export async function POST(request: Request) {
     const userResult = await query(userQuery, userValues);
     const userId = userResult.rows[0].id;
 
-    // 2. Insert into applications using your exact database schema column names
+    // 2. Insert into applications using database schema column names
     const insertQuery = `
       INSERT INTO applications (
         id,
