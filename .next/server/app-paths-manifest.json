@@ -1,5 +1,18 @@
 {
-  "/page": "app/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/admin/applications/page": "app/admin/applications/page.js",
+  "/admin/applications/[id]/page": "app/admin/applications/[id]/page.js",
+  "/api/admin/applications/[id]/send-code/route": "app/api/admin/applications/[id]/send-code/route.js",
   "/admin/page": "app/admin/page.js",
-  "/underwriter/login/page": "app/underwriter/login/page.js"
+  "/api/applications/[id]/verify/route": "app/api/applications/[id]/verify/route.js",
+  "/api/apply/route": "app/api/apply/route.js",
+  "/api/states/route": "app/api/states/route.js",
+  "/apply/page": "app/apply/page.js",
+  "/page": "app/page.js",
+  "/track/page": "app/track/page.js",
+  "/underwriter/login/page": "app/underwriter/login/page.js",
+  "/api/admin/applications/[id]/route": "app/api/admin/applications/[id]/route.js",
+  "/api/admin/applications/route": "app/api/admin/applications/route.js",
+  "/api/applications/[id]/route": "app/api/applications/[id]/route.js",
+  "/api/applications/route": "app/api/applications/route.js"
 }
