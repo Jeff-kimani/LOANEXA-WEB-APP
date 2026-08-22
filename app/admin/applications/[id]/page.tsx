@@ -505,9 +505,9 @@ export default function ApplicationReviewPage({ params }: { params: { id: string
                       className={`inline-block px-4 py-1.5 border rounded text-sm font-bold uppercase tracking-wider ${
                         statusClean === 'approved'
                           ? 'bg-green-50 text-green-700 border-green-200'
-                          ? statusClean === 'rejected'
-                          : 'bg-red-50 text-red-700 border-red-200'
-                          : 'bg-yellow-50 text-yellow-800 border-yellow-200'
+                          : statusClean === 'rejected'
+                            ? 'bg-red-50 text-red-700 border-red-200'
+                            : 'bg-yellow-50 text-yellow-800 border-yellow-200'
                       }`}
                     >
                       {application.status}
